@@ -5,7 +5,20 @@ function navigation(x, y, position){
 
 function directions(instructions){
 
-    return instructions.split("");
+    const splitInstr = instructions.split("");
+return splitInstr
+/**  splitInstr.forEach(element => {
+        switch(element){
+            case "L":
+                console.log("Left");
+            break;
+            case "M":
+                console.log("Move");
+            break;    
+        }  
+*/
+
+
 }
 
 module.exports = {
