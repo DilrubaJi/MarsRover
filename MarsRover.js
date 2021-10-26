@@ -1,5 +1,5 @@
-function navigation(value){
-    return 1;
+function navigation(x, y){
+    return `${x} ${y}`;
 }
 
 

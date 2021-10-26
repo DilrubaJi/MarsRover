@@ -4,7 +4,7 @@ const {
 
 describe("describe input start position", () => {
     test("test for input values", () => {
-        expect(navigation(0,0)).toBe(0,0);
+        expect(navigation(0,0)).toBe("0 0");
     });
 });
 
