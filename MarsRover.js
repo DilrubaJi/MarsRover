@@ -5,7 +5,7 @@ function navigation(x, y, position){
 
 function directions(instructions){
 
-    return [instructions];
+    return instructions.split("");
 }
 
 module.exports = {

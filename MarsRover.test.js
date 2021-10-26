@@ -17,7 +17,7 @@ describe("describe input start position", () => {
 
 describe("put directions in an array", () => {
     test("test for each direction letter in an array element", () => {
-        expect(directions("LMLM")).toEqual(["LMLM"]);
+        expect(directions("LMLM")).toEqual(["L","M","L","M"]);
     });
 
 });
