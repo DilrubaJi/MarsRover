@@ -47,18 +47,21 @@ describe("moveRoverOnePlace function compound results", () => {
 
 describe("roverNavigator takes navigation instructions and returns end coordinates and position direction", () => {
     test("test single instruction, turn right from North starting", () => {
-        expect(roverNavigator(["R"])).toBe("E");
+        expect(roverNavigator(["R"])).toBe("0 0 E");
     });
     test("test single instruction, turn right from East to South", () => {
-        expect(roverNavigator(["R"])).toBe("S");
+        expect(roverNavigator(["R"])).toBe("0 0 S");
     });
     test("test single instruction, turn left from South back to East", () => {
-        expect(roverNavigator(["L"])).toBe("E");
+        expect(roverNavigator(["L"])).toBe("0 0 E");
+    });
+    test("test single instruction, turn left from East back to North", () => {
+        expect(roverNavigator(["L"])).toBe("0 0 N");
     });
 });
 
 describe("roverNavigator takes navigation instructions and returns end coordinates and position direction", () => {
     test("test single instruction, M to move rover in correct direction and return coordinates, set to North", () => {
-        expect(roverNavigator(["M"])).toBe("0 1");
+        expect(roverNavigator(["M"])).toBe("0 1 N");
     });
 });

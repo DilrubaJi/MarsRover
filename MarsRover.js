@@ -28,11 +28,11 @@ function roverNavigator(arrInstructions) {
         if (character === "R" || "L") {
             changeRoverOrientation(character);
         };
-  //      if (character === "M") {
-  //          moveRoverOnePlace(currentOrientationState);
-  //      };
+        if (character === "M") {
+            moveRoverOnePlace(currentOrientationState);
+        };
     });
-    return currentOrientationState;
+    return (xAxis + " " + yAxis + " " + currentOrientationState);
 };
 
 /**
