@@ -56,3 +56,9 @@ describe("roverNavigator takes navigation instructions and returns end coordinat
         expect(roverNavigator(["L"])).toBe("E");
     });
 });
+
+describe("roverNavigator takes navigation instructions and returns end coordinates and position direction", () => {
+    test("test single instruction, M to move rover in correct direction and return coordinates, set to North", () => {
+        expect(roverNavigator(["M"])).toBe("0 1");
+    });
+});
