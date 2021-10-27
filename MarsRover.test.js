@@ -1,23 +1,23 @@
 //required functions for testing
 const {
-    position,
-    movement,
+    changeRoverOrientation,
+    moveRoverOnePlace,
     stringToArray
 } = require("../MarsRover/MarsRover");
 
 
 describe("current orientation start N, move left 4 times", () => {
     test("move from North to West", () => {
-        expect(position("L")).toBe("W");
+        expect(changeRoverOrientation("L")).toBe("W");
     });
     test("move from West to South", () => {
-        expect(position("L")).toBe("S");
+        expect(changeRoverOrientation("L")).toBe("S");
     });
     test("move from South to East", () => {
-        expect(position("L")).toBe("E");
+        expect(changeRoverOrientation("L")).toBe("E");
     });
     test("move from East to North", () => {
-        expect(position("L")).toBe("N");
+        expect(changeRoverOrientation("L")).toBe("N");
     });
 });
 
@@ -27,17 +27,17 @@ describe("put directions in an array", () => {
     });
 });
 
-describe("Movement function compound results", () => {
+describe("moveRoverOnePlace function compound results", () => {
     test("test N movement increases x and y on top of previous moves", () => {
-        expect(movement("N")).toBe("0 1");
+        expect(moveRoverOnePlace("N")).toBe("0 1");
         });
     test("test E movement increases x and y on top of previous moves", () => {
-        expect(movement("E")).toBe("1 1");
+        expect(moveRoverOnePlace("E")).toBe("1 1");
         });    
     test("test S movement increases x and y on top of previous moves", () => {
-        expect(movement("S")).toBe("1 0");
+        expect(moveRoverOnePlace("S")).toBe("1 0");
         });    
     test("test W movement increases x and y on top of previous moves", () => {
-        expect(movement("W")).toBe("0 0");
+        expect(moveRoverOnePlace("W")).toBe("0 0");
         });    
 });
