@@ -32,32 +32,22 @@ let yAxis = 0;
 const currentOrientationState = "";
 
 function movement(currentOrientationState){
-
 switch(currentOrientationState){
-    case "N": yAxis++; break;
-    case "E": xAxis++; break;
-    case "S": yAxis--; break;
-    case "W": xAxis--; break;
+    case "N": yAxis += 1; break;
+    case "E": xAxis += 1; break;
+    case "S": yAxis -= 1; break;
+    case "W": xAxis -= 1; break;
 }
-return yAxis;
+return (xAxis + " " + yAxis);
 }
 
 function navigation(x, y, position){
-
-    
-
-
-
     return `${x} ${y} ${position}`;
 }
 
 function directions(instructions){
-
     const splitInstr = instructions.split("");
 return splitInstr
-
-
-
 }
 
 module.exports = {

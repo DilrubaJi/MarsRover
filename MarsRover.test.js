@@ -22,14 +22,17 @@ describe("put directions in an array", () => {
     });
 });
 
-describe("Movement function", () => {
-    beforeAll(() => {
-        let xAxis = 0;
-        let yAxis = 0;
-    })
-    test("test movement increases x and y", () => {
-        
-        expect(movement("N")).toEqual(1);
+describe("Movement function compound results", () => {
+    test("test N movement increases x and y on top of previous moves", () => {
+        expect(movement("N")).toBe("0 1");
         });
-    
+    test("test E movement increases x and y on top of previous moves", () => {
+        expect(movement("E")).toBe("1 1");
+        });    
+    test("test S movement increases x and y on top of previous moves", () => {
+        expect(movement("S")).toBe("1 0");
+        });    
+    test("test W movement increases x and y on top of previous moves", () => {
+        expect(movement("W")).toBe("0 0");
+        });    
 });
