@@ -25,7 +25,7 @@ function stringToArray(string) {
 */
 function roverNavigator(arrInstructions) {
     arrInstructions.forEach(character => {
-        if (character === "R") {
+        if (character === "R" || "L") {
             changeRoverOrientation(character);
         };
     });
