@@ -2,7 +2,8 @@
 const {
     changeRoverOrientation,
     moveRoverOnePlace,
-    stringToArray
+    stringToArray,
+    roverNavigator,
 } = require("../MarsRover/MarsRover");
 
 
@@ -46,6 +47,6 @@ describe("moveRoverOnePlace function compound results", () => {
 
 describe("roverNavigator takes navigation instructions and returns end coordinates and position direction", () => {
     test("test single instruction, turn right from North starting", () => {
-        expect(roverNavigator("R")).toBe("E");
+        expect(roverNavigator(["R"])).toBe("E");
     });
 });

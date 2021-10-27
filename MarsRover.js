@@ -13,7 +13,7 @@ L.3 input example (LMRMLMM)
 */
 
 //  split instructions string into an array, one character per element;
-    function stringToArray(string){
+function stringToArray(string) {
     const arrayInstructions = string.split("");
     return arrayInstructions;
 }
@@ -21,9 +21,16 @@ L.3 input example (LMRMLMM)
 /**
     Call on each letter in turn (forEach);
     If input value is M then call moveRoverOnePlace function => look at current orientation and changes global xAxis and yAxis state by 1, 
-    If input value is L or R then call navigation function =>  
-*/    
-//function
+    If input value is L or R then call changeRoverOrientation function =>  
+*/
+function roverNavigator(arrInstructions) {
+    arrInstructions.forEach(character => {
+        if (character === "R") {
+            changeRoverOrientation(character);
+        };
+    });
+    return currentOrientationState;
+};
 
 /**
 moveRoverOnePlace function(){
@@ -34,18 +41,18 @@ S = Y--
 W = X--
 }
 */
-function moveRoverOnePlace(move){
-switch(move){
-    case "N": yAxis += 1; break;
-    case "E": xAxis += 1; break;
-    case "S": yAxis -= 1; break;
-    case "W": xAxis -= 1; break;
-}
-return (xAxis + " " + yAxis);
+function moveRoverOnePlace(move) {
+    switch (move) {
+        case "N": yAxis += 1; break;
+        case "E": xAxis += 1; break;
+        case "S": yAxis -= 1; break;
+        case "W": xAxis -= 1; break;
+    }
+    return (xAxis + " " + yAxis);
 }
 
 /**
-navigation function(){
+changeRoverOrientation function(){
 If "L" {
     switch(current orientation state)
     case N: to W
@@ -62,17 +69,17 @@ else if "R"{
 }
 }
  */
-function changeRoverOrientation(turning){
-    if (turning === "L"){
-        switch(currentOrientationState){
+function changeRoverOrientation(turning) {
+    if (turning === "L") {
+        switch (currentOrientationState) {
             case "N": currentOrientationState = "W"; break;
             case "E": currentOrientationState = "N"; break;
             case "S": currentOrientationState = "E"; break;
             case "W": currentOrientationState = "S"; break;
         }
     }
-    if (turning === "R"){
-        switch(currentOrientationState){
+    if (turning === "R") {
+        switch (currentOrientationState) {
             case "N": currentOrientationState = "E"; break;
             case "E": currentOrientationState = "S"; break;
             case "S": currentOrientationState = "W"; break;
@@ -87,5 +94,6 @@ function changeRoverOrientation(turning){
 module.exports = {
     changeRoverOrientation,
     moveRoverOnePlace,
-    stringToArray
+    stringToArray,
+    roverNavigator,
 };
