@@ -49,4 +49,10 @@ describe("roverNavigator takes navigation instructions and returns end coordinat
     test("test single instruction, turn right from North starting", () => {
         expect(roverNavigator(["R"])).toBe("E");
     });
+    test("test single instruction, turn right from East to South", () => {
+        expect(roverNavigator(["R"])).toBe("S");
+    });
+    test("test single instruction, turn left from South back to East", () => {
+        expect(roverNavigator(["L"])).toBe("E");
+    });
 });
