@@ -11,9 +11,18 @@ L.2 Initial inputs set global xAxis, yAxis and current orientation state (e.g: 1
 
 L.3 input example (LMRMLMM)
 
+    split instructions string into an array;
+ */   
+    function stringToArray(string){
+    const arrayInstructions = string.split("");
+    return arrayInstructions;
+}
+
+/**
+    Call on each letter in turn (forEach);
 
     If input value is M then call movement function => look at current orientation and changes global xAxis and yAxis state by 1, 
-    If input value is L or R then call navigation function 
+    If input value is L or R then call navigation function =>  
     
 
 movement function(){
@@ -35,24 +44,24 @@ return (xAxis + " " + yAxis);
 }
 
 /**
-If L OR R call directions function below:
-
+navigation function(){
 If "L" {
     switch(current orientation state)
     case N: to W
     case E: to N
     case S: to E
     case W: to S   
-
-else if "R"
+}
+else if "R"{
     switch(current orientation state)
     case N: to E
     case E: to S
     case S: to W
     case W: to N    
 }
+}
  */
-function navigation(turning){
+function position(turning){
     if (turning === "L"){
         switch(currentOrientationState){
             case "N": currentOrientationState = "W"; break;
@@ -72,13 +81,10 @@ function navigation(turning){
     return currentOrientationState;
 }
 
-function directions(instructions){
-    const splitInstr = instructions.split("");
-return splitInstr
-}
+
 
 module.exports = {
-    navigation,
-    directions,
+    position,
     movement,
+    stringToArray
 };
