@@ -1,6 +1,7 @@
 const {
     navigation,
     directions,
+    movement,
 } = require("../MarsRover/MarsRover");
 
 describe("describe input start position", () => {
@@ -19,5 +20,16 @@ describe("put directions in an array", () => {
     test("test for each direction letter in an array element", () => {
         expect(directions("LMLM")).toEqual(["L","M","L","M"]);
     });
+});
 
+describe("Movement function", () => {
+    beforeAll(() => {
+        let xAxis = 0;
+        let yAxis = 0;
+    })
+    test("test movement increases x and y", () => {
+        
+        expect(movement("N")).toEqual(1);
+        });
+    
 });
