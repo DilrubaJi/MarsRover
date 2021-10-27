@@ -4,15 +4,18 @@ const {
     movement,
 } = require("../MarsRover/MarsRover");
 
-describe("describe input start position", () => {
-    test("test for input 0 0 N values", () => {
-        expect(navigation(0,0,"N")).toBe("0 0 N");
+describe("current orientation start N, move left 4 times", () => {
+    test("move from North to West", () => {
+        expect(navigation("L")).toBe("W");
     });
-    test("test for input 1 3 N values", () => {
-        expect(navigation(1,3,"N")).toBe("1 3 N");
+    test("move from West to South", () => {
+        expect(navigation("L")).toBe("S");
     });
-    test("test for input 3 4 S values", () => {
-        expect(navigation(3,4,"S")).toBe("3 4 S");
+    test("move from South to East", () => {
+        expect(navigation("L")).toBe("E");
+    });
+    test("move from East to North", () => {
+        expect(navigation("L")).toBe("N");
     });
 });
 
