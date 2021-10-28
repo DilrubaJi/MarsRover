@@ -72,24 +72,24 @@ else if "R"{
 }
 }
  */
-function changeRoverOrientation(turning) {
-    if (turning === "L") {
-        switch (currentOrientationState) {
-            case "N": currentOrientationState = "W"; break;
-            case "E": currentOrientationState = "N"; break;
-            case "S": currentOrientationState = "E"; break;
-            case "W": currentOrientationState = "S"; break;
+function changeRoverOrientation(turningCommand, orientationState) {
+    if (turningCommand === "L") {
+        switch (orientationState) {
+            case "N": orientationState = "W"; break;
+            case "E": orientationState = "N"; break;
+            case "S": orientationState = "E"; break;
+            case "W": orientationState = "S"; break;
         }
     }
-    if (turning === "R") {
-        switch (currentOrientationState) {
-            case "N": currentOrientationState = "E"; break;
-            case "E": currentOrientationState = "S"; break;
-            case "S": currentOrientationState = "W"; break;
-            case "W": currentOrientationState = "N"; break;
+    if (turningCommand === "R") {
+        switch (orientationState) {
+            case "N": orientationState = "E"; break;
+            case "E": orientationState = "S"; break;
+            case "S": orientationState = "W"; break;
+            case "W": orientationState = "N"; break;
         }
     }
-    return currentOrientationState;
+    return orientationState;
 }
 
 
