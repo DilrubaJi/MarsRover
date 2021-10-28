@@ -1,8 +1,8 @@
 
-let xAxis = 0;
-let yAxis = 0;
+let initialxAxis = 0;
+let initialyAxis = 0;
 //Global current state of orientation value to keep track of current direction of rover
-let currentOrientationState = "N";
+let initialOrientationState = "N";
 
 /** 
 L.1 Initial grid maximum sets grid size limits
@@ -24,15 +24,17 @@ function stringToArray(string) {
     If input value is L or R then call changeRoverOrientation function =>  
 */
 function roverNavigator(arrInstructions) {
+    let newOrientation = initialOrientationState;
+    let changedCoordinates = initialxAxis + " " + initialyAxis;
     arrInstructions.forEach(character => {
         if (character === "R" || "L") {
-            changeRoverOrientation(character);
+            newOrientation = changeRoverOrientation(character, newOrientation);
         };
         if (character === "M") {
-            moveRoverOnePlace(currentOrientationState);
+            changedCoordinates = moveRoverOnePlace(newOrientation);
         };
     });
-    return (xAxis + " " + yAxis + " " + currentOrientationState);
+    return (changedCoordinates + " " + newOrientation);
 };
 
 /**
@@ -44,14 +46,16 @@ S = Y--
 W = X--
 }
 */
-function moveRoverOnePlace(move) {
-    switch (move) {
-        case "N": yAxis += 1; break;
-        case "E": xAxis += 1; break;
-        case "S": yAxis -= 1; break;
-        case "W": xAxis -= 1; break;
+function moveRoverOnePlace(orientationState2) {
+    let xAxis2 = 0;
+    let yAxis2 = 0;
+    switch (orientationState2) {
+        case "N": yAxis2++; break;
+        case "E": xAxis2++; break;
+        case "S": yAxis2--; break;
+        case "W": xAxis2--; break;
     }
-    return (xAxis + " " + yAxis);
+    return (xAxis2 + " " + yAxis2);
 }
 
 /**
