@@ -1,8 +1,7 @@
-
-let initialxAxis = 0;
-let initialyAxis = 0;
-//Global current state of orientation value to keep track of current direction of rover
-let initialOrientationState = "N";
+//Global values depreciated 
+//let initialxAxis = 0;
+//let initialyAxis = 0;
+//let initialOrientationState = "N";
 
 /** 
 L.1 Initial grid maximum sets grid size limits
@@ -20,21 +19,21 @@ function stringToArray(string) {
 
 /**
     Call on each letter in turn (forEach);
-    If input value is M then call moveRoverOnePlace function => look at current orientation and changes global xAxis and yAxis state by 1, 
+    If input value is M then call moveRoverOnePlace function => pass orientationstate to return one step coordinates, 
     If input value is L or R then call changeRoverOrientation function =>  
 */
-function roverNavigator(arrInstructions) {
-    let newOrientation = initialOrientationState;
-    let changedCoordinates = initialxAxis + " " + initialyAxis;
+function roverNavigator(arrInstructions, xAxis3, yAxis3, initialOrientation) {
+    let newOrientation = initialOrientation;
+    let changedCoordinates = [xAxis3, yAxis3];
     arrInstructions.forEach(character => {
         if (character === "R" || "L") {
             newOrientation = changeRoverOrientation(character, newOrientation);
         };
         if (character === "M") {
-            changedCoordinates = moveRoverOnePlace(newOrientation);
+            changedCoordinates = moveRoverOnePlace(newOrientation, changedCoordinates);
         };
     });
-    return (changedCoordinates + " " + newOrientation);
+    return changedCoordinates + " " + newOrientation;
 };
 
 /**
@@ -46,16 +45,16 @@ S = Y--
 W = X--
 }
 */
-function moveRoverOnePlace(orientationState2) {
-    let xAxis2 = 0;
-    let yAxis2 = 0;
+function moveRoverOnePlace(orientationState2, changedCoordinates) {
+//    let xAxis2 = 0;
+//    let yAxis2 = 0;
     switch (orientationState2) {
-        case "N": yAxis2++; break;
-        case "E": xAxis2++; break;
-        case "S": yAxis2--; break;
-        case "W": xAxis2--; break;
+        case "N": changedCoordinates[1]++; break;
+        case "E": changedCoordinates[0]++; break;
+        case "S": changedCoordinates[1]--; break;
+        case "W": changedCoordinates[0]--; break;
     }
-    return (xAxis2 + " " + yAxis2);
+    return (changedCoordinates);
 }
 
 /**
