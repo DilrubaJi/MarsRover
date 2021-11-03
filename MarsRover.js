@@ -1,14 +1,9 @@
-//Global values depreciated 
-//let initialxAxis = 0;
-//let initialyAxis = 0;
-//let initialOrientationState = "N";
-
 /** 
 L.1 Initial grid maximum sets grid size limits
 
 L.2 Initial inputs set global xAxis, yAxis and current orientation state (e.g: 1 2 N)
 
-L.3 input example (LMRMLMM)
+L.3 input directions example (LMRMLMM)
 */
 
 //  split instructions string into an array, one character per element;
@@ -46,8 +41,6 @@ W = X--
 }
 */
 function moveRoverOnePlace(orientationState2, changedCoordinates) {
-//    let xAxis2 = 0;
-//    let yAxis2 = 0;
     switch (orientationState2) {
         case "N": changedCoordinates[1]++; break;
         case "E": changedCoordinates[0]++; break;

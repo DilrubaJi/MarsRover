@@ -1,17 +1,16 @@
 # MarsRover
 Mars Rover kata - Tech Returners
 
-You are working in an Engineering Squad for the Mars Mission, tasked with designing software to manage robots and cool vehicles for space
+As an Engineering Squad for the Mars Mission, tasked with designing software to manage robots and cool vehicles for space
 exploration!
 
    N
 W <=> E
    S
 
-
 L = Turn left
 R = Turn Right
-M = Move x1 toward
+M = Move x1 toward in direction of Rover
 
 Example Test Case
 Lines of Input to the Program:
@@ -24,37 +23,8 @@ Expected Output:
 1 3 N
 5 1 E
 
-Your Solution
-Feel free to implement an approach that you feel comfortable with to receive input into your program e.g. feeding input values into unit tests;
-input via a console application; supplying input via a file etc.
-We would like you to apply Test-Driven Development (TDD) to test-drive your solution.
-We would like to see production-quality code, this means you have thought carefully about your code design and that your code is clean and
-well-tested.
-We’d love to see good unit test coverage and all unit tests passing.
 
-Top Tips:
-* Sketch / plan out your ideas first, we recommend starting off by modelling / diagramming what you might need and getting initial ideas
-down on paper.
-* Commit into your Github repository frequently and with descriptive commit messages.
-* Write a descriptive README to document the key features of your solution, your assumptions, approaches and future thoughts.
-* Note down future thoughts / considerations:
-You can make the assumption that the Plateau is rectangular, but be sure to have a think about how easily your program can be
-extended upon in the future to support a different shaped Plateau.
-How might your Plateau support other vehicles and not just Rovers?
-
-Pseudocode outline	
-Set grid maximum from initial inputs	
-Enter input lines into Input commands object	
-Initiate Object with output results stored	
-	
-Call on each set of Rover commands to function	
-	Function to calculate end position from movement inputs and start pos
-	Return end position to Output Object
-Call on next set of movement inputs	
-Return Output	
-
-
-Tests to start with
+Tests to start with:
 Return current position when start position given
 Return start and end position when x1 turn given
 Return start and end position when x1 move given
@@ -78,36 +48,62 @@ Rovers can cross each others paths and current positions (exist in same space-ti
 Considerations outside scope:
 Obstacles could be stored in an array
 Rovers cannot cross past each others current positions (return error or re-route)
+Accept non retangualr grid size
+Include distance limit (fuel/battery limit)
 
 
-Unknowns -research areas
+Unknowns -research areas:
 How to deal with mulitple line inputs 
 
 
-NEW IDEA::
+Peusdocode:
 
+L.1 Initial grid maximum sets grid size limits
+
+L.2 Initial inputs set global xAxis, yAxis and current orientation state (e.g: 1 2 N)
+
+L.3 input directions example (LMRMLMM)
+
+L.2 and L.3 repeat for additional Rovers
+
+function to split directions into an array
+
+ Call on each letter in turn (forEach);
+    If input value is M then call moveRoverOnePlace function => pass orientationstate to return one step coordinates, 
+    If input value is L or R then call changeRoverOrientation function =>  
+
+
+moveRoverOnePlace function(){
+switch
 N = y++
 E = X++
 S = Y--
 W = X--
+}
 
-input example (LMLMRMM)
 
-M will look at current orientation state viable and use above switch table
-
-Left and Right commands will go through below if then switch:
-
+changeRoverOrientation function(){
 If "L" {
     switch(current orientation state)
     case N: to W
-    case W: to S
+    case E: to N
     case S: to E
-    case E: to N   
-
-else if "R"
+    case W: to S   
+}
+else if "R"{
     switch(current orientation state)
     case N: to E
     case E: to S
     case S: to W
     case W: to N    
 }
+}
+
+Outstanding known areas of improvement: 
+Edge cases for unit tests
+Rover drives over edge
+setting grid size
+data validation for each function
+Rover pass over each other error
+
+
